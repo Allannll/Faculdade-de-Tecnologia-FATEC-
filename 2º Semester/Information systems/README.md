@@ -6,7 +6,7 @@ This project is a Telegram bot for booking accommodations in a guesthouse, built
 
 ## Overview
 
-Pousada-Bot was developed as part of the Information Systems discipline, addressing concepts of artificial intelligence and service automation. The bot facilitates booking stays, providing a personalized and practical experience to users.
+Chico-Bot was developed as part of the Information Systems discipline, addressing concepts of artificial intelligence and service automation. The bot facilitates booking stays, providing a personalized and practical experience to users.
 
 ## Technologies Used
 
