@@ -23,6 +23,23 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/0Zenix/pousada-bot
+1. Clone the repository to your machine:
+    ```bash
+    git clone --no-checkout https://github.com/Allannll/Faculdade-de-Tecnologia-FATEC-.git
+    ```
+2. Change directory into the cloned repository:
+    ```bash
+    cd Faculdade-de-Tecnologia-FATEC-
+    ```
+3. Initialize sparse-checkout:
+    ```bash
+    git sparse-checkout init --cone
+    ```
+4. Set the directory to check out:
+    ```bash
+    git sparse-checkout set "2º Semester/Information systems"
+    ```
+5. Checkout the main branch:
+    ```bash
+    git checkout main
+    ```
