@@ -24,6 +24,24 @@ The Number Base Converter was built using **Visual Basic .NET**, with **Visual S
 
 ### Installation
 
+
 1. Clone the repository to your machine:
-```bash
-git clone https://github.com/your-user/base-converter
+    ```bash
+    git clone --no-checkout https://github.com/Allannll/Faculdade-de-Tecnologia-FATEC-.git
+    ```
+2. Change directory into the cloned repository:
+    ```bash
+    cd Faculdade-de-Tecnologia-FATEC-
+    ```
+3. Initialize sparse-checkout:
+    ```bash
+    git sparse-checkout init --cone
+    ```
+4. Set the directory to check out:
+    ```bash
+    git sparse-checkout set "1º Semester/Computer Architecture and Organization"
+    ```
+5. Checkout the main branch:
+    ```bash
+    git checkout main
+    ```
