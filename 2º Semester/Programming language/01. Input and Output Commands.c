@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//
 void printMultiplicationTable(int num) {
     printf("\nMultiplication Table of %d:\n", num);
     printf("%d x 1 = %d\n", num, num * 1);
