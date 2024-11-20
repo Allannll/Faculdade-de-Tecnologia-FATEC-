@@ -37,33 +37,4 @@ cd Faculdade-de-Tecnologia-FATEC-
 
 3. To browse the projects for each semester, you can access the specific folders within the repository.
 
-### Using Sparse Checkout
-
-If you want to clone only a specific folder, such as a project for a specific semester, you can use the **sparse-checkout** command to do so. Here's how:
-
-1. Clone the repository without checking it out immediately:
-```bash
-git clone --no-checkout https://github.com/Allannll/Faculdade-de-Tecnologia-FATEC-.git
-```
-
-2. Enter the repository directory:
-```bash
-cd Faculdade-de-Tecnologia-FATEC-
-```
-
-3. Initialize sparse-checkout:
-```bash
-git sparse-checkout init --cone
-```
-
-4. Set the folder to be downloaded, for example, for the first semester:
-```bash
-git sparse-checkout set "1º Semester"
-```
-
-5. Checkout the main branch:
-```bash
-git checkout main
-```
-
-Now you have access only to the "1º Semester" folder, without downloading the entire repository.
+Now you have access to all the folders in the repository.
