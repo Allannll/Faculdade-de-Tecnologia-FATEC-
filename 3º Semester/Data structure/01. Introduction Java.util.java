@@ -1,61 +1,60 @@
 import java.util.Scanner;
+import java.math.BigInteger;
 
 public class Ex1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Digite o valor de x: ");
+        System.out.print("Enter the value of x: ");
         int x = scanner.nextInt();
-        System.out.print("Digite o valor de y: ");
+        System.out.print("Enter the value of y: ");
         int y = scanner.nextInt();
 
         int z = (x * x) + (y * y);
 
-        System.out.println("O valor de z é: " + z);
+        System.out.println("The value of z is: " + z);
     }
 }
 
-
-public class MediaAlunoIfElse {
+public class StudentGradeIfElse {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Digite a primeira nota: ");
-        double nota1 = scanner.nextDouble();
-        System.out.print("Digite a segunda nota: ");
-        double nota2 = scanner.nextDouble();
+        System.out.print("Enter the first grade: ");
+        double grade1 = scanner.nextDouble();
+        System.out.print("Enter the second grade: ");
+        double grade2 = scanner.nextDouble();
 
-        double media = (nota1 + nota2) / 2;
+        double average = (grade1 + grade2) / 2;
 
-        if (media >= 6.0) {
-            System.out.println("Aprovado!");
+        if (average >= 6.0) {
+            System.out.println("Passed!");
         } else {
-            System.out.println("Reprovado!");
+            System.out.println("Failed!");
         }
     }
 }
 
-
-public class MediaAlunoWhile {
+public class StudentGradeWhile {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double nota1, nota2;
-        double media;
+        double grade1, grade2;
+        double average;
 
-        nota1 = nota2 = media = 0;
+        grade1 = grade2 = average = 0;
 
         while (true) {
-            System.out.print("Digite a primeira nota: ");
-            nota1 = scanner.nextDouble();
-            System.out.print("Digite a segunda nota: ");
-            nota2 = scanner.nextDouble();
+            System.out.print("Enter the first grade: ");
+            grade1 = scanner.nextDouble();
+            System.out.print("Enter the second grade: ");
+            grade2 = scanner.nextDouble();
 
-            media = (nota1 + nota2) / 2;
+            average = (grade1 + grade2) / 2;
 
-            if (media >= 6.0) {
-                System.out.println("Aprovado!");
+            if (average >= 6.0) {
+                System.out.println("Passed!");
             } else {
-                System.out.println("Reprovado!");
+                System.out.println("Failed!");
             }
 
             break;
@@ -63,27 +62,26 @@ public class MediaAlunoWhile {
     }
 }
 
-
-public class MediaAlunoFor {
+public class StudentGradeFor {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double nota1, nota2;
-        double media;
+        double grade1, grade2;
+        double average;
 
-        nota1 = nota2 = media = 0;
+        grade1 = grade2 = average = 0;
 
         for (int i = 0; i < 1; i++) {
-            System.out.print("Digite a primeira nota: ");
-            nota1 = scanner.nextDouble();
-            System.out.print("Digite a segunda nota: ");
-            nota2 = scanner.nextDouble();
+            System.out.print("Enter the first grade: ");
+            grade1 = scanner.nextDouble();
+            System.out.print("Enter the second grade: ");
+            grade2 = scanner.nextDouble();
 
-            media = (nota1 + nota2) / 2;
+            average = (grade1 + grade2) / 2;
 
-            if (media >= 6.0) {
-                System.out.println("Aprovado!");
+            if (average >= 6.0) {
+                System.out.println("Passed!");
             } else {
-                System.out.println("Reprovado!");
+                System.out.println("Failed!");
             }
         }
     }
@@ -91,47 +89,43 @@ public class MediaAlunoFor {
 
 public class Ex3 {
     public static void main(String[] args) {
-        int somatorio = 0;
+        int sum = 0;
 
         for (int i = 100; i <= 500; i += 2) {
-            somatorio += i;
+            sum += i;
         }
 
-        System.out.println("O somatório dos números pares entre 100 e 500 é: " + somatorio);
+        System.out.println("The sum of even numbers between 100 and 500 is: " + sum);
     }
 }
-
 
 public class Ex4 {
     public static void main(String[] args) {
-        BigInteger fatorial = BigInteger.ONE;
-        int numero = 750;
+        BigInteger factorial = BigInteger.ONE;
+        int number = 750;
 
-        for (int i = 1; i <= numero; i++) {
-            fatorial = fatorial.multiply(BigInteger.valueOf(i));
+        for (int i = 1; i <= number; i++) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
         }
 
-        System.out.println("O fatorial de " + numero + " é: " + fatorial);
+        System.out.println("The factorial of " + number + " is: " + factorial);
     }
 }
-
-
-import java.util.Scanner;
 
 public class Ex5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int maior = Integer.MIN_VALUE;
+        int largest = Integer.MIN_VALUE;
 
         for (int i = 1; i <= 15; i++) {
-            System.out.print("Digite o valor " + i + ": ");
-            int valor = scanner.nextInt();
+            System.out.print("Enter value " + i + ": ");
+            int value = scanner.nextInt();
 
-            if (valor > maior) {
-                maior = valor;
+            if (value > largest) {
+                largest = value;
             }
         }
 
-        System.out.println("O maior valor é: " + maior);
+        System.out.println("The largest value is: " + largest);
     }
 }
