@@ -15,7 +15,7 @@ This repository contains projects and activities from various disciplines, with 
 
 - **Git**: Version control tool used to manage repositories.
 - **Visual Studio / Visual Studio Code**: Used as an integrated development environment.
-- **C++/VBA/vb.NET/C/JavaScript/Java**: Used in other programming projects.
+- **C++/C/VBA/vb.NET/JavaScript/Java**: Used in other programming projects.
 
 ## Getting Started
 
