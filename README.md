@@ -18,7 +18,7 @@ This repository contains projects and activities from various disciplines, with 
 - **C++/C/VBA/vb.NET/JavaScript/Java**: Used in other programming projects.
 
 ## Getting Started
-
+\\
 ### Prerequisites
 
 - **Git**: Make sure you have Git installed on your machine. If you don't, you can download and install it [here](https://git-scm.com/).
