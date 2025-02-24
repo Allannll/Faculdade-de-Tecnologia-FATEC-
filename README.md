@@ -1,4 +1,4 @@
-# Faculty of Technology (FATEC)
+# University of Technology (FATEC)
 
 This repository centralizes all activities and projects carried out during the course at the Faculty of Technology. The idea is to create a digital portfolio with all the content developed throughout the course.
 
