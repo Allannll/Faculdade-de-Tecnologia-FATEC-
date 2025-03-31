@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/colors.dart';
 import 'package:proj_eng/view/regScreen.dart';
-
-
 import 'loginScreen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -11,93 +9,134 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: Container(
-       height: double.infinity,
-       width: double.infinity,
-       decoration: const BoxDecoration(
-         gradient: LinearGradient(
-           colors: [
-             DefaultColors.backgroundColor,
-             DefaultColors.backgroundColor2,
-           ]
-         )
-       ),
-       child: Column(
-         children: [
-           const Padding(
-             padding: EdgeInsets.only(top: 200.0),
-             child: Image(image: AssetImage('assets/logo.png')),
-           ),
-           const SizedBox(
-             height: 100,
-           ),
-           const Text('Welcome Back',style: TextStyle(
-             fontSize: 30,
-             color: Colors.white
-           ),),
-          const SizedBox(height: 30,),
-          GestureDetector(
-            onTap: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Loginscreen()));
-            },
-
-
-        child: ElevatedButton(
-          onPressed: () {
-            //inserir o direcionamento da page
-          },
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white, backgroundColor: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3), 
-              side: BorderSide(color: Colors.white), 
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            DefaultColors.background2,
+            DefaultColors.background2,  
+          ]),
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 40),
+            
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 20), 
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Bem-vindo',
+                    style: TextStyle(
+                      fontSize: 60, 
+                      color: DefaultColors.font,
+                    ),
+                  ),
+                  const SizedBox(height: 10), 
+                  const Text(
+                    'Estamos felizes que você \n'
+                     'esteja aqui!', 
+                    style: TextStyle(
+                      fontSize: 20, 
+                      color: DefaultColors.font,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            minimumSize: Size(320, 53), 
-          ),
-          child: const Text(
-            'Entre',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            const SizedBox(height: 60), 
+            const Image(image: AssetImage('assets/logo.png')),
+            Expanded(child: Container()),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Loginscreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: DefaultColors.componentFont,
+                backgroundColor: DefaultColors.componentBackgroud,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Colors.white),
+                ),
+                minimumSize: Size(320, 53),
+              ),
+              child: const Text(
+                'Entre',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-        )
-
-
-          ),
-           const SizedBox(height: 30,),
-           GestureDetector(
-             onTap: (){
-               Navigator.push(context,
-                   MaterialPageRoute(builder: (context) => const RegScreen()));
-             },
-             child: Container(
-               height: 53,
-               width: 320,
-               decoration: BoxDecoration(
-                 color: Colors.white,
-                 borderRadius: BorderRadius.circular(30),
-                 border: Border.all(color: Colors.white),
-               ),
-               child: const Center(child: Text('Cadastre-se',style: TextStyle(
-                   fontSize: 20,
-                   fontWeight: FontWeight.bold,
-                   color: Colors.black
-               ),),),
-             ),
-           ),
-           const Spacer(),
-           const Text('Login with Social Media',style: TextStyle(
-               fontSize: 17,
-               color: Colors.white
-           ),),//
-          const SizedBox(height: 12,),
-           const Image(image: AssetImage('assets/social.png'))
-          ]
-       ),
-     ),
-
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                    indent: 40,
+                    endIndent: 10,
+                  ),
+                ),
+                const Text(
+                  'Ou',
+                  style: TextStyle(
+                    fontSize: 15, 
+                    color: Colors.grey
+                  ),
+                ),
+                Expanded(
+                  child: Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                    indent: 10,
+                    endIndent: 40,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: DefaultColors.componentBackgroud,
+                backgroundColor: DefaultColors.componentFont,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: DefaultColors.componentBackgroud),
+                ),
+                minimumSize: Size(320, 53),
+              ),
+              child: const Text(
+                'Cadastre-se',
+                style: TextStyle(
+                  fontSize: 20, 
+                  fontWeight: 
+                  FontWeight.bold
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Login with Social Media',
+              style: TextStyle(
+                fontSize: 17, 
+                color: Colors.black
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
