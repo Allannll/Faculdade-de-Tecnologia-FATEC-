@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proj_eng/model/colors.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/view/regScreen.dart';
 import 'loginScreen.dart';
 
