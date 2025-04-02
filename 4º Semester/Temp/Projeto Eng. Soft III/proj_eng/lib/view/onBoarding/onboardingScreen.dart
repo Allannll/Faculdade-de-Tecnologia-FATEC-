@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proj_eng/controller/onboarding_controller.dart';
@@ -14,7 +13,8 @@ class Onboardingscreen extends StatelessWidget{
     @override
     Widget build(BuildContext context) {
       final controller = Get.put(OnboardingController());
-      return Scaffold(  
+      return Scaffold( 
+        backgroundColor: Colors.white, 
         body: Stack(
           children: [
             PageView(
@@ -23,20 +23,20 @@ class Onboardingscreen extends StatelessWidget{
               children: const [
                 OnboardingPage(
                   image: TImages.onBoardingImage1,
-                  title: 'title',
-                  subtitle: 'subtitle',
+                  title: 'Bem-vindo à Plataforma Acadêmica',
+                  subtitle: 'Organize sua vida acadêmica em um só lugar. Acompanhe notas, faltas e anúncios diretamente no seu celular. Simples e prático!',
                 ),
 
                 OnboardingPage(
                   image: TImages.onBoardingImage2,
-                  title: 'title2',
-                  subtitle: 'subtitle2',
+                  title: 'Feito por Alunos, para Alunos',
+                  subtitle: 'Desenvolvido por estudantes da FATEC Ribeirão Preto, esta plataforma foi pensada para facilitar sua rotina acadêmica, com foco na praticidade e eficiência.',
                 ),
 
                 OnboardingPage(
-                  image: TImages.onBoardingImage1,
-                  title: 'title3',
-                  subtitle: 'subtitle3',
+                  image: TImages.onBoardingImage3,
+                  title: 'Tudo o que Você Precisa',
+                  subtitle: 'Acesse informações importantes sobre sua jornada na faculdade, acompanhe seu progresso e fique sempre atualizado com as novidades e eventos da universidade.',
                 ),
               ],
             ),

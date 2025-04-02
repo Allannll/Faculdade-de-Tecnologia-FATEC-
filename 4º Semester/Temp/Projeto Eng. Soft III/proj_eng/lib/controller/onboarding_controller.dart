@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:proj_eng/view/loginScreen.dart';
-import 'package:proj_eng/view/welcomeScreen.dart';
+import 'package:proj_eng/view/welcomeScreen/welcomeScreen.dart';
 
 class OnboardingController extends GetxController{
   static OnboardingController get instance => Get.find();

@@ -23,7 +23,7 @@ class OnBoardoDotNavigation extends StatelessWidget {
           onDotClicked: controller.dotNavigationClick,
           count: 3,
           effect: const ExpandingDotsEffect(
-            activeDotColor: Colors.blue,
+            activeDotColor: Colors.red,
             dotHeight: 5,
           )
       ),

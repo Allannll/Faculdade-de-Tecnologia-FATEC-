@@ -9,20 +9,26 @@ class OnboardingNextButton extends StatelessWidget {
       super.key,
     });            
 
-    @override
+  @override
   Widget build(BuildContext context) {
-    return   Positioned(
+    return Positioned(
       right: TSizes.defaultSpace,
       bottom: TDevice.getBottomNavigationBarHeight(),
       child: ElevatedButton(
-        onPressed: () => OnboardingController.instance.nextPage(), 
+        onPressed: () => OnboardingController.instance.nextPage(),
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(), 
-          backgroundColor: Colors.blue,
-          padding: const EdgeInsets.all(16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          backgroundColor: Colors.red,
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          fixedSize: const Size(50, 50), 
         ),
-        child: Icon(Iconsax.arrow_right_3, color: Colors.white,)
-      )
+        child: Icon(
+          Iconsax.arrow_right_3,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

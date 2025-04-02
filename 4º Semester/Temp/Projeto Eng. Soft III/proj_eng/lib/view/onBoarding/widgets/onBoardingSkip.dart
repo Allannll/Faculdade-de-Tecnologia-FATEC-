@@ -18,7 +18,7 @@ class onBoardingSkip extends StatelessWidget {
           child: const Text(
           'Pular',
           style: TextStyle(
-            color: Colors.blue
+            color: Colors.grey
           ),
           )
         ),

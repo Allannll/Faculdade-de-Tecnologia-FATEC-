@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
+import 'package:proj_eng/view/loginScreen.dart';
 import 'package:proj_eng/view/regScreen.dart';
-import 'loginScreen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -48,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 60), 
-            const Image(image: AssetImage('assets/logo.png')),
+            const Image(image: AssetImage('assets/images/both_with_diploma.jpg')),
             Expanded(child: Container()),
             ElevatedButton(
               onPressed: () {
@@ -128,7 +128,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             const Text(
-              'Login with Social Media',
+              'Esqueceu a senha?',
               style: TextStyle(
                 fontSize: 17, 
                 color: Colors.black

@@ -38,6 +38,7 @@ dependencies:
   get: ^4.7.2
   smooth_page_indicator: ^1.2.1
   iconsax: ^0.0.8
+  gif: ^2.3.0
 
 dev_dependencies:
   flutter_test:
