@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:proj_eng/controller/onboarding_controller.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
 import 'package:proj_eng/model/Constants/sizes.dart';

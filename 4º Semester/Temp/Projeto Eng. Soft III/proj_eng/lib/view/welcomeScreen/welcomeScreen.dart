@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
-import 'package:proj_eng/view/loginScreen.dart';
-import 'package:proj_eng/view/regScreen.dart';
+import 'package:proj_eng/view/welcomeScreen/widgets/welcomeScreen_divider.dart';
+import 'package:proj_eng/view/welcomeScreen/widgets/welcomeScreen_login_button.dart';
+import 'package:proj_eng/view/welcomeScreen/widgets/welcomeScreen_reg_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -13,6 +14,10 @@ class WelcomeScreen extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'), 
+            fit: BoxFit.cover, 
+          ),
           gradient: LinearGradient(colors: [
             DefaultColors.background2,
             DefaultColors.background2,  
@@ -24,119 +29,52 @@ class WelcomeScreen extends StatelessWidget {
             
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 20), 
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     'Bem-vindo',
                     style: TextStyle(
-                      fontSize: 60, 
+                      fontSize: 35, 
                       color: DefaultColors.font,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Promp'
                     ),
                   ),
                   const SizedBox(height: 10), 
                   const Text(
-                    'Estamos felizes que você \n'
-                     'esteja aqui!', 
+                    'Acadify Feito por alunos, para alunos. \nSua vida acadêmica, de forma simples e prática.', 
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20, 
+                      fontSize: 15, 
+                      fontFamily: 'Promp',
                       color: DefaultColors.font,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 60), 
-            const Image(image: AssetImage('assets/images/both_with_diploma.jpg')),
+            const SizedBox(height: 5), 
+            const Image(image: AssetImage('assets/images/Acadify_logo.png'),
+                  width: 500,
+                  height: 500,
+                  ),
             Expanded(child: Container()),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Loginscreen()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: DefaultColors.componentFont,
-                backgroundColor: DefaultColors.componentBackgroud,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.white),
-                ),
-                minimumSize: Size(320, 53),
-              ),
-              child: const Text(
-                'Entre',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
+
+            welcomeScreen_login_button(),
+
             const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    thickness: 1,
-                    indent: 40,
-                    endIndent: 10,
-                  ),
-                ),
-                const Text(
-                  'Ou',
-                  style: TextStyle(
-                    fontSize: 15, 
-                    color: Colors.grey
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    thickness: 1,
-                    indent: 10,
-                    endIndent: 40,
-                  ),
-                ),
-              ],
-            ),
+            welcomeScreen_divider(), 
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegScreen()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: DefaultColors.componentBackgroud,
-                backgroundColor: DefaultColors.componentFont,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: DefaultColors.componentBackgroud),
-                ),
-                minimumSize: Size(320, 53),
-              ),
-              child: const Text(
-                'Cadastre-se',
-                style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: 
-                  FontWeight.bold
-                ),
-              ),
-            ),
+
+            welcomeScreen_reg_button(),
+
             const SizedBox(height: 30),
-            const Text(
-              'Esqueceu a senha?',
-              style: TextStyle(
-                fontSize: 17, 
-                color: Colors.black
-              ),
-            ),
           ],
         ),
       ),
     );
   }
 }
+

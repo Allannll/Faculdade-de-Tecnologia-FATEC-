@@ -32,8 +32,6 @@ class Loginscreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 200.0),
           child: Container(
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40), topRight: Radius.circular(40)),
               color: Colors.white,
             ),
             height: double.infinity,
@@ -43,15 +41,7 @@ class Loginscreen extends StatelessWidget {
               child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.check,color: Colors.grey,),
-                      label: Text('Gmail',style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color:Color(0xffB81736),
-                      ),)
-                    ),
-                  ),
+                  loginScreen_textbox(),
                   const TextField(
                     decoration: InputDecoration(
                         suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
@@ -115,5 +105,24 @@ class Loginscreen extends StatelessWidget {
         ),
       ],
     ));
+  }
+}
+
+class loginScreen_textbox extends StatelessWidget {
+  const loginScreen_textbox({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const TextField(
+      decoration: InputDecoration(
+        suffixIcon: Icon(Icons.check,color: Colors.grey,),
+        label: Text('Gmail',style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color:Color(0xffB81736),
+        ),)
+      ),
+    );
   }
 }
