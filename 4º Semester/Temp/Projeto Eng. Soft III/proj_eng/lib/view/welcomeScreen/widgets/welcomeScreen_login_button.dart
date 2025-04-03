@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
 import 'package:proj_eng/view/loginScreen/loginScreen.dart';
@@ -18,7 +17,7 @@ class welcomeScreen_login_button extends StatelessWidget {
         onPressed: (){
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Loginscreen()),
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
           );
         },
         style: ElevatedButton.styleFrom(
