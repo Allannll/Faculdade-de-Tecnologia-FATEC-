@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:proj_eng/view/regScreen/regScreen.dart';
+import 'package:proj_eng/view/loginScreen/loginScreen.dart';
 
-class SignUpPrompt extends StatelessWidget {
-  const SignUpPrompt({super.key});
+class LogInPrompt extends StatelessWidget {
+  const LogInPrompt({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class SignUpPrompt extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "Ainda não tem conta?",
+          "Já possui conta?",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey,
@@ -20,11 +20,11 @@ class SignUpPrompt extends StatelessWidget {
           onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const RegScreen()),
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
           );
           },
           child: const Text(
-            "Cadastre-se",
+            "Entre",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17,

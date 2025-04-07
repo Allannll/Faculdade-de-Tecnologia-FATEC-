@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
-import 'package:proj_eng/utils/navigation_menu.dart';
-class LoginButton extends StatelessWidget {
+import 'package:proj_eng/view/loginScreen/loginScreen.dart';
+
+class RegButton extends StatelessWidget {
   final AuthenticatorRepository auth;
 
-  const LoginButton({super.key, required this.auth});
+  const RegButton({super.key, required this.auth});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +14,12 @@ class LoginButton extends StatelessWidget {
       width: 300,
       child: ElevatedButton(
         onPressed: () {
-          final success = auth.handleLogin(context);
-
+          final success = auth.handleRegister(context);
           if (success) {
-            Get.to(() => NavigationMenu());
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
           }
         },
         style: ElevatedButton.styleFrom(
@@ -28,7 +29,7 @@ class LoginButton extends StatelessWidget {
           ),
         ),
         child: const Text(
-          'Entrar',
+          'Cadastrar',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,

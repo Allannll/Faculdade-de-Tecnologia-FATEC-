@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class welcomeScreen_divider extends StatelessWidget {
   const welcomeScreen_divider({

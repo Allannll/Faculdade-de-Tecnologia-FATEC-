@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_button.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_optionsRow.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_signUpPrompt.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_textbox.dart';
+import 'package:proj_eng/view/regScreen/widgets/regScreen_button.dart';
+import 'package:proj_eng/view/regScreen/widgets/regScreen_loginPrompt.dart';
+import 'package:proj_eng/view/regScreen/widgets/regScreen_textbox.dart';
 
 final auth = AuthenticatorRepository();
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegScreen extends StatelessWidget {
+  const RegScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +34,18 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: const BoxDecoration(
-                  color: DefaultColors.secondary,
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: 
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: 
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Align(
                       alignment: Alignment.centerLeft,
@@ -52,39 +55,42 @@ class LoginScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Olá, conecte-se',
+                              'Cadastre-se',
                               style: TextStyle(
                                 fontSize: 30,
-                                color: DefaultColors.font,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             SizedBox(height: 10),
                             Text(
-                              'Entre com seu e-mail e senha para continuar!',
+                              'Vamos criar sua conta, insira seus dados para continuar!',
                               style: TextStyle(
                                 fontSize: 20,
-                                color: DefaultColors.componentFont,
+                                color: Colors.red,
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
-                    LoginScreenTextBox(
+                    const SizedBox(height: 30),
+                    RegScreenTextBox(
                       text: 'E-MAIL',
-                      emailLoginController: auth.emailLoginController,
-                      passwordLoginController: auth.passwordLoginController,
+                      emailController: auth.emailController,
+                      passwordController: auth.passwordController,
+                      nameController: auth.nameController,
+                      lastNameController: auth.lastNameController
                       ),
-                    const SizedBox(height: 20),
-                    const LoginOptionsRow(),
+                    const SizedBox(height: 70),
+                    // const LoginOptionsRow(),
+                    // const SizedBox(height: 50),
+                    RegButton(auth: auth),
                     const SizedBox(height: 50),
-                    LoginButton(auth: auth),
-                    const SizedBox(height: 50),
-                    const SignUpPrompt(),
+                    const LogInPrompt(),
                   ],
                 ),
+              )
               ),
             ),
           ],

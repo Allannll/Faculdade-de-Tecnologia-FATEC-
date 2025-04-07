@@ -19,8 +19,8 @@ class WelcomeScreen extends StatelessWidget {
             fit: BoxFit.cover, 
           ),
           gradient: LinearGradient(colors: [
-            DefaultColors.background2,
-            DefaultColors.background2,  
+            DefaultColors.primary,
+            DefaultColors.primary,  
           ]),
         ),
         child: Column(
