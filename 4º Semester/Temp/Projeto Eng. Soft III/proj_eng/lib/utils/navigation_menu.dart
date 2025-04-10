@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:proj_eng/view/calendar/calendar.dart';
 import 'package:proj_eng/view/home/home.dart';
 import 'package:proj_eng/view/profile/profile.dart';
 
@@ -35,5 +36,5 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 2.obs;
 
-  final screens = [Container(color: Colors.purple), Container(color: Colors.red), HomeScreen(), Container(color: Colors.green), ProfileScreen()];
+  final screens = [CalendarScreen(), Container(color: Colors.red), HomeScreen(), Container(color: Colors.green), ProfileScreen()];
 }

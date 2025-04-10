@@ -39,6 +39,8 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   iconsax: ^0.0.8
   gif: ^2.3.0
+  table_calendar: ^3.0.9
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
