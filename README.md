@@ -15,11 +15,11 @@ This repository contains projects and activities from various disciplines, with 
 
 - **Git**: Version control tool used to manage repositories.
 - **Visual Studio / Visual Studio Code**: Used as an integrated development environment.
-- **C++/C/VBA/vb.NET/JavaScript/Java**: Used in other programming projects.
+- **C++/C/VBA/vb.NET/JavaScript/Java/Flutter**: Used in other programming projects.
 
 ## Getting Started
 \\
-### Prerequisites
+### Pre-requisites
 
 - **Git**: Make sure you have Git installed on your machine. If you don't, you can download and install it [here](https://git-scm.com/).
 
