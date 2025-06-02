@@ -1,4 +1,7 @@
-package mario;
+package mario.MarioStates;
+
+import mario.Mario;
+import mario.MarioState;
 
 public class FireMario implements MarioState {
     private Mario mario;
@@ -15,7 +18,7 @@ public class FireMario implements MarioState {
         System.out.println("Nada acontece. Mario já está com Flor de Fogo.");
     }
 
-    public void takeSuperFeather() {
+    public void takeTanookiLeaf() {
         System.out.println("Mario virou Mario Tanuki!");
         mario.setState(new TanookiMario(mario));
     }

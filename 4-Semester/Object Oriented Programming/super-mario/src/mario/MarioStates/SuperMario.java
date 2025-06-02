@@ -1,4 +1,7 @@
-package mario;
+package mario.MarioStates;
+
+import mario.Mario;
+import mario.MarioState;
 
 public class SuperMario implements MarioState {
     private Mario mario;
@@ -16,7 +19,7 @@ public class SuperMario implements MarioState {
         mario.setState(new FireMario(mario));
     }
 
-    public void takeSuperFeather() {
+    public void takeTanookiLeaf() {
         System.out.println("Mario virou Mario Tanuki!");
         mario.setState(new TanookiMario(mario));
     }

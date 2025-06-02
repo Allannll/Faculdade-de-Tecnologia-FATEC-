@@ -17,7 +17,7 @@ public class Main {
                 System.out.println("Escolha uma opção:");
                 System.out.println("1 - Pegar cogumelo");
                 System.out.println("2 - Pegar flor de fogo");
-                System.out.println("3 - Pegar super pena");
+                System.out.println("3 - Pegar folha de tanooki");
                 System.out.println("4 - Tomar dano");
                 System.out.println("0 - Sair");
                 System.out.print("Opção: ");
@@ -32,7 +32,7 @@ public class Main {
                         mario.takeFireFlower();
                         break;
                     case 3:
-                        mario.takeSuperFeather();
+                        mario.takeTanookiLeaf();
                         break;
                     case 4:
                         mario.takeDamage();

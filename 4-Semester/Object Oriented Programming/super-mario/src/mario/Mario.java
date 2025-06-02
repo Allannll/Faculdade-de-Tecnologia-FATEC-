@@ -1,5 +1,7 @@
 package mario;
 
+import mario.MarioStates.TinyMario;
+
 public class Mario {
     private MarioState currentState;
     private boolean isAlive = true;
@@ -42,8 +44,8 @@ public class Mario {
         if (currentState != null) currentState.takeFireFlower();
     }
 
-    public void takeSuperFeather() {
-        if (currentState != null) currentState.takeSuperFeather();
+    public void takeTanookiLeaf() {
+        if (currentState != null) currentState.takeTanookiLeaf();
     }
 
     public void takeDamage() {
