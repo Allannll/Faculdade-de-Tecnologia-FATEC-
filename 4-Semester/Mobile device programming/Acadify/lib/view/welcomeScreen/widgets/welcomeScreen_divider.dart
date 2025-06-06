@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 
 class welcomeScreen_divider extends StatelessWidget {
   const welcomeScreen_divider({
@@ -12,7 +13,7 @@ class welcomeScreen_divider extends StatelessWidget {
       children: [
         Expanded(
           child: Divider(
-            color: Colors.white,
+            color: DefaultColors.font,
             thickness: 1,
             indent: 40,
             endIndent: 10,
@@ -22,12 +23,12 @@ class welcomeScreen_divider extends StatelessWidget {
           'Ou',
           style: TextStyle(
             fontSize: 15, 
-            color: Colors.white
+            color: DefaultColors.font,
           ),
         ),
         Expanded(
           child: Divider(
-            color: Colors.white,
+            color: DefaultColors.font,
             thickness: 1,
             indent: 10,
             endIndent: 40,

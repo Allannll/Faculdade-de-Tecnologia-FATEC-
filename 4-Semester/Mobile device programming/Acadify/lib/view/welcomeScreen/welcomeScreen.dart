@@ -15,13 +15,18 @@ class WelcomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'), 
+            image: AssetImage('assets/images/backgroundia-no-logo.jpeg'), 
             fit: BoxFit.cover, 
           ),
-          gradient: LinearGradient(colors: [
-            DefaultColors.primary,
-            DefaultColors.primary,  
-          ]),
+          // gradient: LinearGradient(
+          //   colors: [
+          //   DefaultColors.primary,
+          //   Colors.redAccent,  
+          // ],
+          // begin: Alignment.topCenter,
+          // end: Alignment.bottomCenter
+          // ),
+          
         ),
         child: Column(
           children: [
@@ -42,6 +47,16 @@ class WelcomeScreen extends StatelessWidget {
                       fontFamily: 'Promp'
                     ),
                   ),
+                  // const SizedBox(height: 1),
+                  const Text(
+                    'Acadify',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 90, 
+                      fontFamily: 'Promp',
+                      color: DefaultColors.font,
+                    )
+                  ),
                   const SizedBox(height: 10), 
                   const Text(
                     'Acadify Feito por alunos, para alunos. \nSua vida acadêmica, de forma simples e prática.', 
@@ -55,11 +70,11 @@ class WelcomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 5), 
-            const Image(image: AssetImage('assets/images/Acadify_logo.png'),
-                  width: 500,
-                  height: 500,
-                  ),
+            // const SizedBox(height: 5), 
+            // const Image(image: AssetImage('assets/images/Acadify_logo.png'),
+            //       width: 500,
+            //       height: 500,
+            //       ),
             Expanded(child: Container()),
 
             welcomeScreen_login_button(),
