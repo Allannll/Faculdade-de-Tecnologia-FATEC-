@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 
 class RegScreenTextBox extends StatelessWidget {
   const RegScreenTextBox({
@@ -32,7 +33,7 @@ class RegScreenTextBox extends StatelessWidget {
                     labelText: "Nome",
                     prefixIcon: Icon(Iconsax.user),
                     labelStyle: TextStyle(color: Colors.grey),
-                    floatingLabelStyle: TextStyle(color: Colors.red),
+                    floatingLabelStyle: TextStyle(color: DefaultColors.componentFont),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -42,7 +43,7 @@ class RegScreenTextBox extends StatelessWidget {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: Colors.red, width: 2),
+                      borderSide: BorderSide(color: DefaultColors.componentFont, width: 2),
                     ),
                   ),
                 ),
@@ -58,7 +59,7 @@ class RegScreenTextBox extends StatelessWidget {
                     labelText: "Sobrenome",
                     prefixIcon: Icon(Iconsax.user),
                     labelStyle: TextStyle(color: Colors.grey),
-                    floatingLabelStyle: TextStyle(color: Colors.red),
+                    floatingLabelStyle: TextStyle(color: DefaultColors.componentFont),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -68,7 +69,7 @@ class RegScreenTextBox extends StatelessWidget {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: Colors.red, width: 2),
+                      borderSide: BorderSide(color: DefaultColors.componentFont, width: 2),
                     ),
                   ),
                 ),
@@ -86,7 +87,7 @@ class RegScreenTextBox extends StatelessWidget {
               prefixIcon: Icon(Iconsax.direct_right, color: Colors.grey),
               labelText: "E-mail",
               labelStyle: TextStyle(color: Colors.grey),
-              floatingLabelStyle: TextStyle(color: Colors.red),
+              floatingLabelStyle: TextStyle(color: DefaultColors.componentFont),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 // borderSide: BorderSide.none,
@@ -97,7 +98,7 @@ class RegScreenTextBox extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(color: Colors.red, width: 2), 
+                borderSide: BorderSide(color: DefaultColors.componentFont, width: 2), 
               ),
             ),
           ),
@@ -110,7 +111,7 @@ class RegScreenTextBox extends StatelessWidget {
               prefixIcon: Icon(Iconsax.password_check, color: Colors.grey),
               labelText: "Senha",
               labelStyle: TextStyle(color: Colors.grey),
-              floatingLabelStyle: TextStyle(color: Colors.red),
+              floatingLabelStyle: TextStyle(color: DefaultColors.componentFont),
               suffixIcon: Icon(Iconsax.eye_slash),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -122,7 +123,7 @@ class RegScreenTextBox extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(color: Colors.red, width: 2),
+                borderSide: BorderSide(color: DefaultColors.componentFont, width: 2),
                 
               ),
             ),

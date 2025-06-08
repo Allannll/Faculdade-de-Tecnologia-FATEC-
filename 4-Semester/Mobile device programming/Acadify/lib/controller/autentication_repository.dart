@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
+import 'package:proj_eng/services/auth_service.dart';
 
 class AuthenticatorRepository {
 
@@ -12,6 +14,8 @@ class AuthenticatorRepository {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailLoginController = TextEditingController();
   final TextEditingController passwordLoginController = TextEditingController();
+
+  Authentication _authentication = Authentication();
 
   final List<Map<String, String>> _registeredUsers = [];
 
@@ -27,20 +31,26 @@ class AuthenticatorRepository {
     if (emailReg.isEmpty || passwordReg.isEmpty || name.isEmpty || lastName.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          backgroundColor: Colors.red,
-          content: Text("Preencha todos os campos", style: TextStyle(color: Colors.white)),
+          backgroundColor: DefaultColors.componentFont,
+          content: Text("Preencha todos os campos", style: TextStyle(color: DefaultColors.font)),
 
         ),
       );
       return false;
     }
 
-    _registeredUsers.add({
-      "email": emailReg,
-      "password": passwordReg,
-      "name": name,
-      "lastName": lastName,
-    });
+    // _registeredUsers.add({
+    //   "email": emailReg,
+    //   "password": passwordReg,
+    //   "name": name,
+    //   "lastName": lastName,
+    // });
+
+    _authentication.registerUser(
+      email: emailReg, 
+      name: name, 
+      password: passwordReg
+    );
 
       // for (var user in _registeredUsers) {
       //   print("Email: ${user['email']}, Senha: ${user['password']}");
@@ -48,8 +58,8 @@ class AuthenticatorRepository {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.red,
-        content: Text("Usuário $name cadastrado com sucesso!", style: TextStyle(color: Colors.white))
+        backgroundColor: DefaultColors.componentFont,
+        content: Text("Usuário $name cadastrado com sucesso!", style: TextStyle(color: DefaultColors.font))
       ),
     );
     return true;
@@ -70,16 +80,16 @@ bool handleLogin(BuildContext context) {
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        backgroundColor: Colors.red,
-        content: Text("Login bem-sucedido!", style: TextStyle(color: Colors.white)),
+        backgroundColor: DefaultColors.componentFont,
+        content: Text("Login bem-sucedido!", style: TextStyle(color: DefaultColors.font)),
       ),
     );
     return true;
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        backgroundColor: Colors.red,
-        content: Text("E-mail ou senha inválidos.", style: TextStyle(color: Colors.white)),
+        backgroundColor: DefaultColors.componentFont,
+        content: Text("E-mail ou senha inválidos.", style: TextStyle(color: DefaultColors.font)),
       ),
     );
     return false;
