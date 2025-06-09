@@ -39,12 +39,12 @@ class AuthenticatorRepository {
       return false;
     }
 
-    // _registeredUsers.add({
-    //   "email": emailReg,
-    //   "password": passwordReg,
-    //   "name": name,
-    //   "lastName": lastName,
-    // });
+    _registeredUsers.add({
+      "email": emailReg,
+      "password": passwordReg,
+      "name": name,
+      "lastName": lastName,
+    });
 
     _authentication.registerUser(
       email: emailReg, 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/view/loginScreen/loginScreen.dart';
 
 class RegButton extends StatelessWidget {
@@ -23,7 +24,7 @@ class RegButton extends StatelessWidget {
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red,
+          backgroundColor: DefaultColors.componentFont,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -33,7 +34,7 @@ class RegButton extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
-            color: Colors.white,
+            color: DefaultColors.font,
           ),
         ),
       ),

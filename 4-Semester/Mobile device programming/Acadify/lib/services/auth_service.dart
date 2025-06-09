@@ -14,7 +14,7 @@ class Authentication {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      print('Erro ao registrar: ${e.message}');
+        print('Erro ao registrar: ${e.message}');
       rethrow;
     }
   }

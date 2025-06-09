@@ -18,7 +18,7 @@ class DefaultColors {
 
   static const Color componentFont = Color(0xFFbe3836);
 
-  static const Color primary = Colors.red;
+  static const Color primary = Color(0xFFbe3836);
 
   static const Color secondary = Colors.white;
 }

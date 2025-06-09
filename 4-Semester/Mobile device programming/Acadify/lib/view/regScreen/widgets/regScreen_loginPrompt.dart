@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/view/loginScreen/loginScreen.dart';
 
 class LogInPrompt extends StatelessWidget {
@@ -28,7 +29,7 @@ class LogInPrompt extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17,
-              color: Colors.red,
+              color: DefaultColors.componentFont,
             ),
           ),
         ),

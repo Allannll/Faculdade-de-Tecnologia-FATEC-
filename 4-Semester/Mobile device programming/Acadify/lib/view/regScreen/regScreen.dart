@@ -58,7 +58,7 @@ class RegScreen extends StatelessWidget {
                               'Cadastre-se',
                               style: TextStyle(
                                 fontSize: 30,
-                                color: Colors.red,
+                                color: DefaultColors.componentFont,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -67,7 +67,7 @@ class RegScreen extends StatelessWidget {
                               'Vamos criar sua conta, insira seus dados para continuar!',
                               style: TextStyle(
                                 fontSize: 20,
-                                color: Colors.red,
+                                color: DefaultColors.componentFont,
                               ),
                             ),
                           ],
