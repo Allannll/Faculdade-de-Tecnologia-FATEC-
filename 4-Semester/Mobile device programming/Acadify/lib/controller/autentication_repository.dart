@@ -14,6 +14,7 @@ class AuthenticatorRepository {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailLoginController = TextEditingController();
   final TextEditingController passwordLoginController = TextEditingController();
+  final TextEditingController forgetPasswordController = TextEditingController();
 
   Authentication _authentication = Authentication();
 
@@ -21,6 +22,13 @@ class AuthenticatorRepository {
 
   Map<String, String>? _loggedInUser;
   Map<String, String>? get loggedInUser => _loggedInUser;
+
+  bool _isStrongPassword(String password) {
+  final hasUppercase = password.contains(RegExp(r'[A-Z]'));
+  final hasNumber = password.contains(RegExp(r'[0-9]'));
+  final hasSpecialChar = password.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'));
+  return hasUppercase && hasNumber && hasSpecialChar;
+  }
 
   bool handleRegister(BuildContext context) {
     final emailReg = emailController.text.trim();
@@ -39,22 +47,35 @@ class AuthenticatorRepository {
       return false;
     }
 
-    _registeredUsers.add({
-      "email": emailReg,
-      "password": passwordReg,
-      "name": name,
-      "lastName": lastName,
-    });
 
+    if (!_isStrongPassword(passwordReg)) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: DefaultColors.componentFont,
+        content: Text(
+          "A senha deve conter pelo menos uma letra maiúscula, um número e um caractere especial.",
+          style: TextStyle(color: DefaultColors.font),
+        ),
+      ),
+    );
+    return false;
+  }
+
+    //local register
+    // _registeredUsers.add({
+    //   "email": emailReg,
+    //   "password": passwordReg,
+    //   "name": name,
+    //   "lastName": lastName,
+    // });
+
+    //Firebase register
     _authentication.registerUser(
       email: emailReg, 
       name: name, 
+      lastName: lastName,
       password: passwordReg
     );
-
-      // for (var user in _registeredUsers) {
-      //   print("Email: ${user['email']}, Senha: ${user['password']}");
-      // 
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -65,37 +86,58 @@ class AuthenticatorRepository {
     return true;
   }
 
-bool handleLogin(BuildContext context) {
-  final emailLogin = emailLoginController.text.trim();
-  final passwordLogin = passwordLoginController.text.trim();
+  Future<bool> handleLogin(BuildContext context) async {
+    final emailLogin = emailLoginController.text.trim();
+    final passwordLogin = passwordLoginController.text.trim();
 
-  // Encontra o usuário com email e senha correspondentes
-  final user = _registeredUsers.firstWhere(
-    (user) => user['email'] == emailLogin && user['password'] == passwordLogin,
-    orElse: () => {},
-  );
-
-  if (user.isNotEmpty) {
-    _loggedInUser = user; // Armazena o usuário logado
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        backgroundColor: DefaultColors.componentFont,
-        content: Text("Login bem-sucedido!", style: TextStyle(color: DefaultColors.font)),
-      ),
-    );
-    return true;
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        backgroundColor: DefaultColors.componentFont,
-        content: Text("E-mail ou senha inválidos.", style: TextStyle(color: DefaultColors.font)),
-      ),
-    );
-    return false;
+    try {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: DefaultColors.componentFont,
+          content: Text(
+            "Login bem-sucedido!",
+            style: TextStyle(color: DefaultColors.font),
+          ),
+        ),
+      );  
+      return true; 
+    } catch (e) {
+      String? error = await _authentication.loginUser(
+        email: emailLogin,
+        password: passwordLogin,
+      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: DefaultColors.componentFont,
+            content: Text(
+              "E-mail ou senha inválidos.",
+              style: TextStyle(color: DefaultColors.font),
+            ),
+          ),
+        );
+      return false;
+    }
   }
-}
 
+  Future<bool> handleForgetPassword(BuildContext context) async {
+    final forgetEmail = forgetPasswordController.text.trim();
+
+    try {
+      await _authentication.passwordReset(email: forgetEmail);
+      return true;
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: DefaultColors.componentFont,
+          content: Text(
+            "Erro ao enviar o e-mail de recuperação.",
+            style: TextStyle(color: DefaultColors.font),
+          ),
+        ),
+      );
+      return false;
+    }
+  }
 
   void dispose() {
     emailController.dispose();

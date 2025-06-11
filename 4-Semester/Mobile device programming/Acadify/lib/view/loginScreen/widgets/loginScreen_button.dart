@@ -6,7 +6,10 @@ import 'package:proj_eng/utils/navigation_menu.dart';
 class LoginButton extends StatelessWidget {
   final AuthenticatorRepository auth;
 
-  const LoginButton({super.key, required this.auth});
+  const LoginButton({
+    super.key, 
+    required this.auth
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,8 @@ class LoginButton extends StatelessWidget {
       height: 55,
       width: 300,
       child: ElevatedButton(
-        onPressed: () {
-          final success = auth.handleLogin(context);
+        onPressed: () async {
+          final success = await auth.handleLogin(context);
 
           if (success) {
             Get.to(() => NavigationMenu());

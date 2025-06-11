@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart' show Get;
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/images.dart';
 import 'package:proj_eng/model/Constants/sizes.dart';
 import 'package:proj_eng/model/Helper/helper_functions.dart';
@@ -33,7 +34,7 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               //title
-              Text("Senha resetada", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
+              Text("E-mail enviado", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwItems),
               Text("A segurança da sua conta é a nossa prioridade! Nos enviamos um e-mail com um link seguro para trocar a sua senha com segurança. Sua senha vai manter a conta em segurança!", style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.grey), textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwSections),
@@ -45,14 +46,14 @@ class ResetPassword extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: (){}, 
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: DefaultColors.componentFont,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: const Text(
                     "Pronto",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: DefaultColors.font),
                   )
                 ),
               ),
@@ -73,7 +74,7 @@ class ResetPassword extends StatelessWidget {
                   onPressed: (){}, 
                   child: const Text(
                     "Reenviar e-mail",
-                    style: TextStyle(color: Colors.red),
+                    style: TextStyle(color: DefaultColors.componentFont),
                     )
                 ),
               )
