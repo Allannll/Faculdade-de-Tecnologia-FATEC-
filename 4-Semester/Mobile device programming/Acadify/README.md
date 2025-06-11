@@ -37,7 +37,7 @@ Make sure you have [Git](https://git-scm.com/) and an IDE like [Visual Studio Co
     ```
 4. Set the directory to check out:
     ```bash
-    git sparse-checkout set "4º Semester/Mobile device programming"
+    git sparse-checkout set "4-Semester/Mobile device programming"
     ```
 5. Checkout the main branch:
     ```bash
