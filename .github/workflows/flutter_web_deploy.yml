@@ -29,4 +29,4 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter web
-        run: flutter build web -t lib/utils/main.dart
+        run: flutter build web -t lib/utils/main.dart --no-tree-shake-icons
