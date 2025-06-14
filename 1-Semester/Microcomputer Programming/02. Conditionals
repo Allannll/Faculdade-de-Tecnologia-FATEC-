@@ -1,0 +1,67 @@
+Sub ex1()
+
+Dim num As Integer
+
+num = InputBox("Digite um número inteiro: ")
+
+If num > 20 Then
+
+MsgBox ("O número" & num & "é maior que 20.")
+
+Else
+
+MsgBox ("O número " & num & " é menor que 20.")
+
+End If
+
+
+End Sub
+
+
+Sub ex2()
+
+Dim num, num2 As Integer
+Dim soma As Variant
+
+num = InputBox("Digite um número inteiro: ")
+num2 = InputBox("Digite um segundo número inteiro: ")
+
+soma = num + num2
+
+If soma > 10 Then
+
+MsgBox ("Somatório de: " & num & "+" & num2 & "=" & soma)
+
+Else
+
+MsgBox ("Somátório não é maior que 10.")
+End If
+
+
+End Sub
+
+Sub ex3()
+
+Dim num, num2 As Integer
+Dim soma As Variant
+Dim somat As Variant
+
+num = InputBox("Digite um número inteiro: ")
+num2 = InputBox("Digite um segundo número inteiro: ")
+
+soma = num + num2
+
+If soma > 20 Then
+
+somat = soma + 8
+
+MsgBox ("Resultado: " & soma & "+" & "8" & "=" & somat)
+
+Else
+
+somat = soma - 5
+MsgBox ("Resultado: " & soma & "-" & "5" & "=" & somat)
+
+
+End If
+End Sub

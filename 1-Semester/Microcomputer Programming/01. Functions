@@ -1,0 +1,48 @@
+Sub Exercício1()
+
+Dim v1 As Integer
+Dim v2 As Integer
+
+
+v1 = Range("C3")
+v2 = Range("C4")
+Range("C5").Value = v1 * v2
+
+
+End Sub
+
+Sub Exercício2()
+
+Dim v1, v2, v3 As Integer
+
+v1 = Range("C9")
+v2 = Range("C10")
+v3 = Range("C11")
+
+Range("C12").Value = (v1 + v2 + v3) / 3
+
+
+End Sub
+
+Sub Exercício3()
+
+Dim numero As Integer
+
+numero = Range("C16")
+Range("C17").Value = numero - 1
+Range("C18").Value = numero + 1
+
+
+End Sub
+
+Sub Exercício4()
+
+Dim v1, v2, v3, v4 As Integer
+
+v1 = Range("C22")
+v2 = Range("C23")
+v3 = Range("C24")
+v4 = Range("C25")
+Range("C26").Value = (v1 * 1 + v2 * 2 + v3 * 3 + v4 * 4) / (1 + 2 + 3 + 4)
+
+End Sub
