@@ -38,15 +38,15 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Bem-vindo',
-                    style: TextStyle(
-                      fontSize: 35, 
-                      color: DefaultColors.font,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Promp'
-                    ),
-                  ),
+                  // const Text(
+                  //   'Bem-vindo',
+                  //   style: TextStyle(
+                  //     fontSize: 35, 
+                  //     color: DefaultColors.font,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'Promp'
+                  //   ),
+                  // ),
                   // const SizedBox(height: 1),
                   const Text(
                     'Acadify',

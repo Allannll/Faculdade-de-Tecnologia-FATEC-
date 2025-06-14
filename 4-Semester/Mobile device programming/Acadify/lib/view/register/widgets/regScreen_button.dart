@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
-import 'package:proj_eng/view/loginScreen/loginScreen.dart';
+import 'package:proj_eng/view/login/loginScreen.dart';
 
 class RegButton extends StatelessWidget {
   final AuthenticatorRepository auth;

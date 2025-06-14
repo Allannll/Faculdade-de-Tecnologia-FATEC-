@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 
 class NewsScreen extends StatelessWidget {
   final List<String> noticias = [
@@ -12,11 +13,11 @@ class NewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: DefaultColors.secondary,
       appBar: AppBar(
         title: Text('Notícias', style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
+        backgroundColor: DefaultColors.componentFont,
+        foregroundColor: DefaultColors.secondary,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -27,7 +28,7 @@ class NewsScreen extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: DefaultColors.secondary,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: Colors.grey.shade300,
@@ -47,13 +48,13 @@ class NewsScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: DefaultColors.componentFont,
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Text(
                       'Fatec - RP 10/04/25',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: DefaultColors.secondary,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
@@ -86,7 +87,7 @@ class NewsScreen extends StatelessWidget {
                         child: Text(
                           noticias[index],
                           style: TextStyle(
-                            color: Colors.red[900],
+                            color: DefaultColors.componentFont,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             height: 1.2,
@@ -108,7 +109,7 @@ class NewsScreen extends StatelessWidget {
                       child: Text(
                         'Saiba mais',
                         style: TextStyle(
-                          color: Colors.red,
+                          color: DefaultColors.componentFont,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

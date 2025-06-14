@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_button.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_optionsRow.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_signUpPrompt.dart';
-import 'package:proj_eng/view/loginScreen/widgets/loginScreen_textbox.dart';
+import 'package:proj_eng/view/login/widgets/loginScreen_button.dart';
+import 'package:proj_eng/view/login/widgets/loginScreen_optionsRow.dart';
+import 'package:proj_eng/view/login/widgets/loginScreen_signUpPrompt.dart';
+import 'package:proj_eng/view/login/widgets/loginScreen_textbox.dart';
 
 final auth = AuthenticatorRepository();
 

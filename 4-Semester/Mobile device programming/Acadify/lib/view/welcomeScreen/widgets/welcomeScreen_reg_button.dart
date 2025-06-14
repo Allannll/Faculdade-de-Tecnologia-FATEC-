@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
-import 'package:proj_eng/view/regScreen/regScreen.dart';
+import 'package:proj_eng/view/register/regScreen.dart';
 
 class welcomeScreen_reg_button extends StatelessWidget {
   

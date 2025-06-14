@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
-import 'package:proj_eng/view/loginScreen/loginScreen.dart';
+import 'package:proj_eng/view/login/loginScreen.dart';
 
 class welcomeScreen_login_button extends StatelessWidget {
   

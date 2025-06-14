@@ -18,8 +18,8 @@ class TSettingsMenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, size: 28, color: DefaultColors.primary),
-      title: Text(title, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.red)),
+      leading: Icon(icon, size: 28, color: DefaultColors.componentFont),
+      title: Text(title, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: DefaultColors.componentFont)),
       subtitle: Text(subtitle, style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey)),
       trailing: trailing,
       onTap: ontap, //function to enter in page

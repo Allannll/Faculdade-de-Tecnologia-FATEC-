@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proj_eng/view/regScreen/regScreen.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
+import 'package:proj_eng/view/register/regScreen.dart';
 
 class SignUpPrompt extends StatelessWidget {
   const SignUpPrompt({super.key});
@@ -28,7 +29,7 @@ class SignUpPrompt extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17,
-              color: Colors.red,
+              color: DefaultColors.componentFont,
             ),
           ),
         ),

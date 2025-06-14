@@ -8,17 +8,22 @@ class AuthenticatorRepository {
   factory AuthenticatorRepository() => _instance;
   AuthenticatorRepository._internal();
 
+ //Register and change
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
+
+  //Login
   final TextEditingController emailLoginController = TextEditingController();
   final TextEditingController passwordLoginController = TextEditingController();
+
+  //Forget password
   final TextEditingController forgetPasswordController = TextEditingController();
 
   Authentication _authentication = Authentication();
 
-  final List<Map<String, String>> _registeredUsers = [];
+  // final List<Map<String, String>> _registeredUsers = []; //Local
 
   Map<String, String>? _loggedInUser;
   Map<String, String>? get loggedInUser => _loggedInUser;
@@ -86,11 +91,59 @@ class AuthenticatorRepository {
     return true;
   }
 
+  bool handleUpdateUser(BuildContext context) {
+    final emailReg = emailController.text.trim();
+    final name = nameController.text.trim();
+    final lastName = lastNameController.text.trim();
+
+    if (emailReg.isEmpty || name.isEmpty || lastName.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: DefaultColors.componentFont,
+          content: Text("Não é póssível salvar nenhum dado.", style: TextStyle(color: DefaultColors.font)),
+
+        ),
+      );
+      return false;
+    }
+
+    try {
+      _authentication.updateUser(
+        email: emailReg, 
+        name: name, 
+        lastName: lastName,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: DefaultColors.componentFont,
+          content: Text("Atualizações realizadas com sucesso.", style: TextStyle(color: DefaultColors.font))
+        ),
+      );
+      return true;
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: DefaultColors.componentFont,
+          content: Text(
+            "Não foi possível atualizar seus dados. Tente novamente mais tarde!",
+              style: TextStyle(color: DefaultColors.font),
+          ),
+        ),
+      );
+      return false;
+    }
+  }
+
   Future<bool> handleLogin(BuildContext context) async {
     final emailLogin = emailLoginController.text.trim();
     final passwordLogin = passwordLoginController.text.trim();
 
     try {
+        String? error = await _authentication.loginUser(
+        email: emailLogin,
+        password: passwordLogin,
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: DefaultColors.componentFont,
@@ -102,10 +155,6 @@ class AuthenticatorRepository {
       );  
       return true; 
     } catch (e) {
-      String? error = await _authentication.loginUser(
-        email: emailLogin,
-        password: passwordLogin,
-      );
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: DefaultColors.componentFont,

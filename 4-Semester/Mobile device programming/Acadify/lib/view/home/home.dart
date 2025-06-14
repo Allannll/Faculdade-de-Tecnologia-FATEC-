@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,12 +7,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: DefaultColors.secondary,
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: DefaultColors.componentFont,
         title: const Text('Bem-vindo'),
         centerTitle: true,
-        foregroundColor: Colors.white,
+        foregroundColor: DefaultColors.secondary,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -28,12 +29,12 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                 children: const [
-                  Icon(Icons.school, color: Colors.red, size: 64),
+                  Icon(Icons.school, color: DefaultColors.componentFont, size: 64),
                   SizedBox(height: 16),
                   Text(
                     'Olá, Aluno!',
                     style: TextStyle(
-                      color: Colors.red,
+                      color: DefaultColors.componentFont,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                     'Confira suas notas, avisos importantes e muito mais!',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.red,
+                      color: DefaultColors.componentFont,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -74,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     'Novidade!',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.red,
+                      color: DefaultColors.componentFont,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -82,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                   Text(
                     'Novo sistema de feedback disponível para os alunos!',
                     style: TextStyle(
-                      color: Colors.red,
+                      color: DefaultColors.componentFont,
                     ),
                   ),
                 ],
@@ -111,13 +112,13 @@ class _HomeButton extends StatelessWidget {
             color: Colors.red.shade50,
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: Colors.red, size: 30),
+          child: Icon(icon, color: DefaultColors.componentFont, size: 30),
         ),
         const SizedBox(height: 8),
         Text(
           label,
           style: const TextStyle(
-            color: Colors.red,
+            color: DefaultColors.componentFont,
             fontWeight: FontWeight.w600,
           ),
         ),

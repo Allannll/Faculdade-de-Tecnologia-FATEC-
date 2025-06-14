@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:proj_eng/controller/autentication_repository.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/utils/navigation_menu.dart';
 class LoginButton extends StatelessWidget {
   final AuthenticatorRepository auth;
@@ -25,7 +26,7 @@ class LoginButton extends StatelessWidget {
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red,
+          backgroundColor: DefaultColors.componentFont,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),

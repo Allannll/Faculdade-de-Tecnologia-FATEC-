@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/view/password/forgetPassword/forgetPassword.dart';
 
 class LoginOptionsRow extends StatelessWidget {
@@ -14,7 +15,7 @@ class LoginOptionsRow extends StatelessWidget {
             Checkbox(
               value: true,
               onChanged: (value) {},
-              activeColor: Colors.red,
+              activeColor: DefaultColors.componentFont,
             ),
             const Text(
               "Manter-me conectado",
@@ -37,7 +38,7 @@ class LoginOptionsRow extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15,
-              color: Colors.red,
+              color: DefaultColors.componentFont,
             ),
           ),
         ),

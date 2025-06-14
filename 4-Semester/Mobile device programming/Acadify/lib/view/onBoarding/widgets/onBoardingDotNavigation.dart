@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/controller/onboarding_controller.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
 import 'package:proj_eng/model/Constants/sizes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -22,7 +23,7 @@ class OnBoardoDotNavigation extends StatelessWidget {
           onDotClicked: controller.dotNavigationClick,
           count: 3,
           effect: const ExpandingDotsEffect(
-            activeDotColor: Colors.red,
+            activeDotColor: DefaultColors.componentFont,
             dotHeight: 5,
           )
       ),

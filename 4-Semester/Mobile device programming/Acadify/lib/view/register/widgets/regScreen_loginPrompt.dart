@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
-import 'package:proj_eng/view/loginScreen/loginScreen.dart';
+import 'package:proj_eng/view/login/loginScreen.dart';
 
 class LogInPrompt extends StatelessWidget {
   const LogInPrompt({super.key});

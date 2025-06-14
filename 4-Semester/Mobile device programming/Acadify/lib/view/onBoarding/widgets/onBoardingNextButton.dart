@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:proj_eng/controller/onboarding_controller.dart';
+import 'package:proj_eng/model/Constants/colors.dart';
 import 'package:proj_eng/model/Constants/device_utility.dart';
 import 'package:proj_eng/model/Constants/sizes.dart';
 
@@ -20,7 +21,7 @@ class OnboardingNextButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: DefaultColors.componentFont,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           fixedSize: const Size(50, 50), 
         ),
