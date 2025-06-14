@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proj_eng/model/Constants/colors.dart';
 
-class welcomeScreen_divider extends StatelessWidget {
-  const welcomeScreen_divider({
-    super.key,
-  });
+class WelcomeScreenDivider extends StatelessWidget {
+  const WelcomeScreenDivider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class welcomeScreen_divider extends StatelessWidget {
         const Text(
           'Ou',
           style: TextStyle(
-            fontSize: 15, 
+            fontSize: 15,
             color: DefaultColors.font,
           ),
         ),

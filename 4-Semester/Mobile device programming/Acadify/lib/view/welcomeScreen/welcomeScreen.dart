@@ -77,13 +77,11 @@ class WelcomeScreen extends StatelessWidget {
             //       ),
             Expanded(child: Container()),
 
-            welcomeScreen_login_button(),
-
+            WelcomeScreenLoginButton(),
             const SizedBox(height: 10),
-            welcomeScreen_divider(), 
+            WelcomeScreenDivider(), 
             const SizedBox(height: 20),
-
-            welcomeScreen_reg_button(),
+            WelcomeScreenRegButton(),
 
             const SizedBox(height: 30),
           ],
