@@ -8,10 +8,10 @@ class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
   @override
-  _CalendarScreenState createState() => _CalendarScreenState();
+  CalendarScreenState createState() => CalendarScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
+class CalendarScreenState extends State<CalendarScreen> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   List<Map<String, dynamic>> _appointments = [];
@@ -127,128 +127,147 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void _showAddAppointmentDialog() {
-    final titleController = TextEditingController();
-    final descriptionController = TextEditingController();
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Novo compromisso',
-          style: TextStyle(color: DefaultColors.componentFont),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: titleController,
-              decoration: const InputDecoration(
-                labelText: 'Título',
-                labelStyle: TextStyle(color: DefaultColors.componentFont),
-              ),
+  showDialog(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      backgroundColor: Colors.white,
+      title: const Text(
+        'Novo compromisso',
+        style: TextStyle(color: DefaultColors.componentFont),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: titleController,
+            decoration: const InputDecoration(
+              labelText: 'Título',
+              labelStyle: TextStyle(color: DefaultColors.componentFont),
             ),
-            TextField(
-              controller: descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Descrição',
-                labelStyle: TextStyle(color: DefaultColors.componentFont),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Cancelar', style: TextStyle(color: DefaultColors.componentFont)),
-            onPressed: () => Navigator.pop(context),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: DefaultColors.componentFont),
-            child: const Text('Salvar', style: TextStyle(color: DefaultColors.secondary)),
-            onPressed: () async {
-              final title = titleController.text.trim();
-              final description = descriptionController.text.trim();
-              if (title.isEmpty || description.isEmpty) {
-                _showCustomSnackBar('Por favor, preencha todos os campos');
-                return;
-              }
-              await _saveAppointment(_selectedDay!, title, description);
-              Navigator.pop(context);
+          TextField(
+            controller: descriptionController,
+            decoration: const InputDecoration(
+              labelText: 'Descrição',
+              labelStyle: TextStyle(color: DefaultColors.componentFont),
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          child: const Text('Cancelar', style: TextStyle(color: DefaultColors.componentFont)),
+          onPressed: () => Navigator.pop(dialogContext), // safe pop
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: DefaultColors.componentFont),
+          child: const Text('Salvar', style: TextStyle(color: DefaultColors.secondary)),
+          onPressed: () {
+            final title = titleController.text.trim();
+            final description = descriptionController.text.trim();
+
+            if (title.isEmpty || description.isEmpty) {
+              _showCustomSnackBar('Por favor, preencha todos os campos');
+              return;
+            }
+
+            // Close the dialog before the async call
+            Navigator.pop(dialogContext);
+
+            // Then do the async operation
+            _saveAppointment(_selectedDay!, title, description).then((_) {
+              if (!mounted) return;
               _showCustomSnackBar('Compromisso salvo com sucesso');
-            },
+            });
+          },
           ),
         ],
       ),
     );
   }
+
 
   void _showEditAppointmentDialog(Map<String, dynamic> appointment) {
-    final titleController = TextEditingController(text: appointment['title']);
-    final descriptionController = TextEditingController(text: appointment['description']);
+  final titleController = TextEditingController(text: appointment['title']);
+  final descriptionController = TextEditingController(text: appointment['description']);
 
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Editar compromisso',
-          style: TextStyle(color: DefaultColors.componentFont),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: titleController,
-              decoration: const InputDecoration(
-                labelText: 'Título',
-                labelStyle: TextStyle(color: DefaultColors.componentFont),
-              ),
+  showDialog(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      backgroundColor: Colors.white,
+      title: const Text(
+        'Editar compromisso',
+        style: TextStyle(color: DefaultColors.componentFont),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: titleController,
+            decoration: const InputDecoration(
+              labelText: 'Título',
+              labelStyle: TextStyle(color: DefaultColors.componentFont),
             ),
-            TextField(
-              controller: descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Descrição',
-                labelStyle: TextStyle(color: DefaultColors.componentFont),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Cancelar', style: TextStyle(color: DefaultColors.componentFont)),
-            onPressed: () => Navigator.pop(context),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: DefaultColors.componentFont),
-            child: const Text('Salvar', style: TextStyle(color: DefaultColors.secondary)),
-            onPressed: () async {
-              final title = titleController.text.trim();
-              final description = descriptionController.text.trim();
-              if (title.isEmpty || description.isEmpty) {
-                _showCustomSnackBar('Por favor, preencha todos os campos');
-                return;
-              }
-              final uid = FirebaseAuth.instance.currentUser?.uid;
-              if (uid == null) return;
-              await FirebaseFirestore.instance
-                  .collection('compromissos')
-                  .doc(uid)
-                  .collection('eventos')
-                  .doc(appointment['id'])
-                  .update({
-                'title': title,
-                'description': description,
-              });
-              Navigator.pop(context);
-              await _loadAppointments(_selectedDay!);
-              await _loadAllAppointments();
-              _showCustomSnackBar('Compromisso atualizado');
-            },
+          TextField(
+            controller: descriptionController,
+            decoration: const InputDecoration(
+              labelText: 'Descrição',
+              labelStyle: TextStyle(color: DefaultColors.componentFont),
+            ),
           ),
         ],
       ),
+      actions: [
+        TextButton(
+          child: const Text('Cancelar', style: TextStyle(color: DefaultColors.componentFont)),
+          onPressed: () => Navigator.pop(dialogContext),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: DefaultColors.componentFont),
+          child: const Text('Salvar', style: TextStyle(color: DefaultColors.secondary)),
+          onPressed: () async {
+            final title = titleController.text.trim();
+            final description = descriptionController.text.trim();
+
+            if (title.isEmpty || description.isEmpty) {
+              _showCustomSnackBar('Por favor, preencha todos os campos');
+              return;
+            }
+
+            final uid = FirebaseAuth.instance.currentUser?.uid;
+            if (uid == null) return;
+
+            // ✅ Pop the dialog FIRST before any async calls
+            Navigator.pop(dialogContext);
+
+            // ✅ Perform updates AFTER closing dialog
+            await FirebaseFirestore.instance
+                .collection('compromissos')
+                .doc(uid)
+                .collection('eventos')
+                .doc(appointment['id'])
+                .update({
+              'title': title,
+              'description': description,
+            });
+
+            // ✅ Safely check widget state before using context-bound methods
+            if (!mounted) return;
+
+            await _loadAppointments(_selectedDay!);
+            await _loadAllAppointments();
+            _showCustomSnackBar('Compromisso atualizado');
+          },
+        ),
+      ],
+     ),
     );
   }
+
 
   void _showAllAppointmentsDialog() {
     final searchController = TextEditingController();
@@ -258,7 +277,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setStateDialog) {
-            void _filterAppointments(String query) {
+            void filterAppointments(String query) {
               final filtered = _allAppointments.where((appointment) {
                 final title = appointment['title']?.toLowerCase() ?? '';
                 return title.contains(query.toLowerCase());
@@ -276,13 +295,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   Expanded(
                     child: TextField(
                       controller: searchController,
-                      onChanged: _filterAppointments,
+                      onChanged: filterAppointments,
                       style: const TextStyle(color: DefaultColors.componentFont),
                       decoration: InputDecoration(
                         hintText: 'Pesquisar compromisso',
+                        // ignore: deprecated_member_use
                         hintStyle: TextStyle(color: DefaultColors.componentFont.withOpacity(0.7)),
                         prefixIcon: Icon(Icons.search, color: DefaultColors.componentFont),
                         filled: true,
+                        // ignore: deprecated_member_use
                         fillColor: DefaultColors.secondary.withOpacity(0.1),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -316,6 +337,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           return Container(
                             margin: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
+                              // ignore: deprecated_member_use
                               color: Colors.red.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -458,7 +480,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     margin: const EdgeInsets.only(bottom: 12),
                     padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
+                      // ignore: deprecated_member_use
                       color: Colors.red.withOpacity(0.1),
+                      // ignore: deprecated_member_use
                       border: Border.all(color: Colors.red.withOpacity(0.3)),
                       borderRadius: BorderRadius.circular(8),
                     ),

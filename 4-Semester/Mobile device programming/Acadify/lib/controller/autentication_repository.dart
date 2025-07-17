@@ -21,7 +21,7 @@ class AuthenticatorRepository {
   //Forget password
   final TextEditingController forgetPasswordController = TextEditingController();
 
-  Authentication _authentication = Authentication();
+  final Authentication _authentication = Authentication();
 
   // final List<Map<String, String>> _registeredUsers = []; //Local
 
@@ -140,10 +140,12 @@ class AuthenticatorRepository {
     final passwordLogin = passwordLoginController.text.trim();
 
     try {
-        String? error = await _authentication.loginUser(
+        await _authentication.loginUser(
         email: emailLogin,
         password: passwordLogin,
       );
+      if (!context.mounted) return false;
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: DefaultColors.componentFont,
@@ -155,6 +157,8 @@ class AuthenticatorRepository {
       );  
       return true; 
     } catch (e) {
+       if (!context.mounted) return false;
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: DefaultColors.componentFont,
@@ -175,6 +179,8 @@ class AuthenticatorRepository {
       await _authentication.passwordReset(email: forgetEmail);
       return true;
     } catch (e) {
+      if (!context.mounted) return false;
+      
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: DefaultColors.componentFont,

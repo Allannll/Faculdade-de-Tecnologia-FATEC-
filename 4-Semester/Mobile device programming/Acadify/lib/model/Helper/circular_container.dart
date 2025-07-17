@@ -15,7 +15,9 @@ class TPrimaryHeaderContainer extends StatelessWidget {
       color: DefaultColors.primary,
       child: Stack(
         children: [
+          // ignore: deprecated_member_use
           Positioned(top: -150, right: -250,child: TCircularForm(backgroundColor: DefaultColors.secondary.withOpacity(0.1))),
+          // ignore: deprecated_member_use
           Positioned(top: 100, right: -300,child: TCircularForm(backgroundColor: DefaultColors.secondary.withOpacity(0.1))),
           child, 
         ],
