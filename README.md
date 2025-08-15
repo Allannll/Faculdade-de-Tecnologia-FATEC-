@@ -1,27 +1,3 @@
-# Mario State Machine
-
-This project is a console-based simulation of Mario's state transitions, inspired by the iconic Nintendo game series. It demonstrates how Mario changes between different forms (Small, Super, Fire, Tanooki) depending on the power-ups he collects or the damage he takes.
-
-> **Note:** This is an educational project designed to explore the **State design pattern** in Java, with a simple user interface and game-like behavior.
-
-## Overview
-
-The Mario State Machine project was developed to represent how Mario evolves through his different forms using object-oriented principles. The player can control Mario through a menu, applying power-ups or taking damage, which alters Mario's current state.
-
-This implementation includes:
-- Four distinct states for Mario
-- A dynamic interface that responds to player input
-- A restart mechanism if Mario dies
-
-## Technologies Used
-
-- **Java**: Core language used to implement the object-oriented logic and state transitions.
-- **IntelliJ IDEA**: Development environment used to structure and run the application.
-- **Git**: Version control for project tracking and collaboration.
-
-## Getting Started
-
-### Prerequisites=======
 # University of Technology (FATEC)
 
 This repository centralizes all activities and projects carried out during the course at the Faculty of Technology. The idea is to create a digital portfolio with all the content developed throughout the course.
@@ -62,3 +38,4 @@ cd Faculdade-de-Tecnologia-FATEC-
 3. To browse the projects for each semester, you can access the specific folders within the repository.
 
 Now you have access to all the folders in the repository.
+>>>>>>> 7afdfdf44af827e5387b9ca118934d6c0c43bdc4
