@@ -21,44 +21,46 @@ This implementation includes:
 
 ## Getting Started
 
-### Prerequisites=======
-# University of Technology (FATEC)
+### Prerequisites
 
-This repository centralizes all activities and projects carried out during the course at the Faculty of Technology. The idea is to create a digital portfolio with all the content developed throughout the course.
+Make sure you have the following tools installed:
+- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+- [Git](https://git-scm.com/)
 
-## Overview
+### Installation
 
-This repository contains projects and activities from various disciplines, with the aim of demonstrating the practical application of the knowledge acquired. Each folder in the repository refers to a specific project or activity, and all are organized by semester or discipline.
-
-## Features
-
-- **Organization by Semester**: Projects and activities are organized by semester for easy navigation.
-- **Practical Demonstration**: Each project contains detailed descriptions about the execution, tools and technologies used.
-
-## Technologies Used
-
-- **Git**: Version control tool used to manage repositories.
-- **Visual Studio / Visual Studio Code**: Used as an integrated development environment.
-- **C++/C/VBA/vb.NET/JavaScript/Java/Flutter**: Used in other programming projects.
-
-## Getting Started
-\\
-### Pre-requisites
-
-- **Git**: Make sure you have Git installed on your machine. If you don't, you can download and install it [here](https://git-scm.com/).
-
-### Cloning the Repository
-
-1. Clone the repository to your machine:
-```bash
-git clone https://github.com/Allannll/Faculdade-de-Tecnologia-FATEC-.git
+1. Clone the repository to your machine: 
+```bash 
+git clone --no-checkout https://github.com/Allannll/Faculdade-de-Tecnologia-FATEC-.git 
+```
+2. Navigate to the correct folder: 
+```bash 
+cd Faculty-of-Technology-FATEC- 
+```
+3. Initialize sparse-checkout: 
+```bash 
+git sparse-checkout init --cone 
+```
+4. Set the project directory: 
+```bash 
+git sparse-checkout set "4-Semester/Object Oriented Programming/Mario State Machine" 
+```
+5. Checkout the main branch: 
+```bash 
+git checkout main 
 ```
 
-2. Enter the cloned repository directory:
-```bash
-cd Faculdade-de-Tecnologia-FATEC-
-```
+Now you can open the project in **IntelliJ IDEA** and run the `Main.java` file.
 
-3. To browse the projects for each semester, you can access the specific folders within the repository.
+## How It Works
 
-Now you have access to all the folders in the repository.
+Upon running the project, you'll interact with a simple text interface where you can:
+- Collect power-ups (Mushroom, Fire Flower, Super Leaf)
+- Take damage
+- View Mario’s current state
+- Revive Mario if he dies
+
+This logic mimics the behavior seen in classic Mario games and is powered by the **State design pattern**, where each state is encapsulated in a separate class that defines its own transitions.
+
+---

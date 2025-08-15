@@ -38,4 +38,3 @@ cd Faculdade-de-Tecnologia-FATEC-
 3. To browse the projects for each semester, you can access the specific folders within the repository.
 
 Now you have access to all the folders in the repository.
->>>>>>> 7afdfdf44af827e5387b9ca118934d6c0c43bdc4
