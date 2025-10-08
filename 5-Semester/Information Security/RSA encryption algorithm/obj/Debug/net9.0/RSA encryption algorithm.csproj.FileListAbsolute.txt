@@ -1,0 +1,15 @@
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\bin\Debug\net9.0\RSA encryption algorithm.exe
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\bin\Debug\net9.0\RSA encryption algorithm.deps.json
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\bin\Debug\net9.0\RSA encryption algorithm.runtimeconfig.json
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\bin\Debug\net9.0\RSA encryption algorithm.dll
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\bin\Debug\net9.0\RSA encryption algorithm.pdb
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.AssemblyInfoInputs.cache
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.AssemblyInfo.cs
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.csproj.CoreCompileInputs.cache
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.sourcelink.json
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.dll
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\refint\RSA encryption algorithm.dll
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.pdb
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\RSA encryption algorithm.genruntimeconfig.cache
+C:\Pastas\Faculdade-de-Tecnologia-FATEC-\5-Semester\Information Security\RSA encryption algorithm\obj\Debug\net9.0\ref\RSA encryption algorithm.dll
