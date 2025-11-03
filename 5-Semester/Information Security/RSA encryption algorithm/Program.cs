@@ -66,7 +66,7 @@ class Program
     }
 }
 
-// Classe que implementa exatamente a lógica
+// Classe que implementa a lógica
 public class SimpleRsa
 {
     public BigInteger P { get; }
