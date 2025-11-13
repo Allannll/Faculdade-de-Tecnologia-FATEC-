@@ -7,17 +7,37 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("===== ALGORITMO RSA =====");
-        Console.WriteLine();
+        Console.WriteLine("===== ALGORITMO RSA =====\n");
 
-        // Entrada dos valores P, Q, D
+        // Entrada dos valores P e Q
         Console.Write("Digite um número primo P: ");
         BigInteger p = BigInteger.Parse(Console.ReadLine());
 
         Console.Write("Digite um número primo Q: ");
         BigInteger q = BigInteger.Parse(Console.ReadLine());
 
-        Console.Write("Digite o valor de D (deve ser coprimo de Z): ");
+        // Calcula Z = φ(n)
+        BigInteger z = (p - 1) * (q - 1);
+        Console.WriteLine($"\nZ (φ(n)) = {z}");
+
+        // Sugere 10 números possíveis para D (coprimos com Z)
+        Console.WriteLine("\nAlguns valores possíveis para D (coprimos de Z):");
+
+        int numberCount = 0;
+        BigInteger tgtNumber = 2;
+
+        while (numberCount < 10)
+        {
+            if (BigInteger.GreatestCommonDivisor(tgtNumber, z) == 1)
+            {
+                Console.WriteLine($"Número válido: {tgtNumber}");
+                numberCount++;
+            }
+            tgtNumber++;
+        }
+
+        // Entrada do valor de D após sugestões
+        Console.Write("\nDigite o valor de D (deve ser coprimo de Z): ");
         BigInteger d = BigInteger.Parse(Console.ReadLine());
 
         var rsa = new SimpleRsa(p, q, d);
@@ -66,7 +86,7 @@ class Program
     }
 }
 
-// Classe que implementa a lógica
+// Classe RSA simples
 public class SimpleRsa
 {
     public BigInteger P { get; }
