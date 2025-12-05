@@ -100,15 +100,6 @@ The documentation includes:
 - Objective functions  
 - Computational analysis and comparison of both models  
 
-## Authors
-
-- Allan dos Santos  
-- Gustavo Santana  
-- Maycon Silva  
-- Guilherme Sestari  
-- Caio Lima  
-- Mariana Rodrigues  
-
 ## Final Notes
 
 This project extends the classical TSP by including deadlines and delay penalties, producing realistic and time-sensitive routing solutions. Both models can be expanded to incorporate time windows, capacity constraints, or subtour elimination cuts.
