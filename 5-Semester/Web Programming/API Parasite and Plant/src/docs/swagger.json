@@ -1,0 +1,1025 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1.0.0",
+    "title": "Plantas e Ecossistema API",
+    "description": "Plantas e Ecossistema API documentation"
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Authentication endpoints"
+    },
+    {
+      "name": "User",
+      "description": "User endpoints"
+    },
+    {
+      "name": "Plant",
+      "description": "Plant endpoints"
+    },
+    {
+      "name": "Parasite",
+      "description": "Parasite endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "JWT Authorization header using the Bearer scheme. Ex: \"Bearer {token}\"",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    },
+    "basicAuth": {
+      "type": "basic",
+      "description": "Basic Authentication for /login. Use nome:senha (nome:senha base64-encoded)."
+    },
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API Key for read-only access. Ex: X-API-Key: sua_chave_secreta"
+    }
+  },
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Autentica o usuário e retorna um JWT",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login realizado com sucesso e token JWT retornado."
+          },
+          "401": {
+            "description": "Credencial inválida ou Autenticação necessária."
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Busca um usuário por nome (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDataResponse"
+            }
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          },
+          "404": {
+            "description": "Usuário não encontrado."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Lista todos os usuários (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "$ref": "#/definitions/UserDataResponse"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Cria um novo usuário (Cadastro Público)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "User infos",
+            "schema": {
+              "$ref": "#/definitions/UserData"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created",
+            "schema": {
+              "$ref": "#/definitions/UserDataResponse"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/plant/": {
+      "get": {
+        "tags": [
+          "Plant"
+        ],
+        "summary": "Lista todas as plantas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "$ref": "#/definitions/PlantDataResponse"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "API Key inválida."
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Plant"
+        ],
+        "summary": "Cria uma nova planta (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Plant infos",
+            "schema": {
+              "$ref": "#/definitions/PlantData"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Plant created",
+            "schema": {
+              "$ref": "#/definitions/PlantDataResponse"
+            }
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/plant/{id}": {
+      "get": {
+        "tags": [
+          "Plant"
+        ],
+        "summary": "Busca uma planta por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlantDataResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Planta não encontrada."
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Plant"
+        ],
+        "summary": "Atualiza uma planta por ID (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PlantData"
+            },
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome_comum": {
+                  "example": "any"
+                },
+                "nome_cientifico": {
+                  "example": "any"
+                },
+                "familia": {
+                  "example": "any"
+                },
+                "origem": {
+                  "example": "any"
+                },
+                "tipo": {
+                  "example": "any"
+                },
+                "ambiente": {
+                  "example": "any"
+                },
+                "rega": {
+                  "example": "any"
+                },
+                "toxico": {
+                  "example": "any"
+                },
+                "imagem_url": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Planta atualizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/PlantDataResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          },
+          "404": {
+            "description": "Planta não encontrada."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Plant"
+        ],
+        "summary": "Exclui uma planta por ID (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Planta excluída com sucesso."
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          },
+          "404": {
+            "description": "Planta não encontrada."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/parasite/{id}": {
+      "get": {
+        "tags": [
+          "Parasite"
+        ],
+        "summary": "Busca um parasita por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ParasiteDataResponse"
+            }
+          },
+          "401": {
+            "description": "API Key inválida."
+          },
+          "404": {
+            "description": "Parasita não encontrado."
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Parasite"
+        ],
+        "summary": "Atualiza um parasita por ID (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ParasiteData"
+            },
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome_comum": {
+                  "example": "any"
+                },
+                "nome_cientifico": {
+                  "example": "any"
+                },
+                "tipo": {
+                  "example": "any"
+                },
+                "plantas_afetadas": {
+                  "example": "any"
+                },
+                "sintomas": {
+                  "example": "any"
+                },
+                "tratamento": {
+                  "example": "any"
+                },
+                "imagem_url": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parasita atualizado com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/ParasiteDataResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          },
+          "404": {
+            "description": "Parasita não encontrado."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Parasite"
+        ],
+        "summary": "Exclui um parasita por ID (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Parasita excluído com sucesso."
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          },
+          "404": {
+            "description": "Parasita não encontrado."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/parasite/": {
+      "get": {
+        "tags": [
+          "Parasite"
+        ],
+        "summary": "Lista todos os parasitas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "$ref": "#/definitions/ParasiteDataResponse"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "API Key inválida."
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Parasite"
+        ],
+        "summary": "Cria um novo parasita (Requer JWT)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Parasite infos",
+            "schema": {
+              "$ref": "#/definitions/ParasiteData"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Parasite created",
+            "schema": {
+              "$ref": "#/definitions/ParasiteDataResponse"
+            }
+          },
+          "401": {
+            "description": "Token inválido ou não fornecido."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "LoginBody": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "nome_do_usuario"
+        },
+        "senha": {
+          "type": "string",
+          "example": "senha_do_usuario"
+        }
+      },
+      "required": [
+        "nome",
+        "senha"
+      ]
+    },
+    "PlantData": {
+      "type": "object",
+      "properties": {
+        "nome_comum": {
+          "type": "string",
+          "example": "Rosa"
+        },
+        "nome_cientifico": {
+          "type": "string",
+          "example": "Rosa rubiginosa"
+        },
+        "familia": {
+          "type": "string",
+          "example": "Rosaceae"
+        },
+        "origem": {
+          "type": "string",
+          "example": "Europa"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "Arbusto"
+        },
+        "ambiente": {
+          "type": "string",
+          "example": "Externo"
+        },
+        "rega": {
+          "type": "string",
+          "example": "2x por semana"
+        },
+        "toxico": {
+          "type": "boolean",
+          "example": true
+        },
+        "imagem_url": {
+          "type": "string",
+          "example": "https://exemplo.com/rosa.jpg"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "Uma planta ornamental muito comum."
+        }
+      },
+      "required": [
+        "nome_comum",
+        "nome_cientifico",
+        "familia",
+        "origem",
+        "tipo",
+        "ambiente",
+        "rega",
+        "toxico",
+        "imagem_url",
+        "descricao"
+      ]
+    },
+    "PlantDataResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "nome_comum": {
+          "type": "string",
+          "example": "Rosa"
+        },
+        "nome_cientifico": {
+          "type": "string",
+          "example": "Rosa rubiginosa"
+        },
+        "familia": {
+          "type": "string",
+          "example": "Rosaceae"
+        },
+        "origem": {
+          "type": "string",
+          "example": "Europa"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "Arbusto"
+        },
+        "ambiente": {
+          "type": "string",
+          "example": "Externo"
+        },
+        "rega": {
+          "type": "string",
+          "example": "2x por semana"
+        },
+        "toxico": {
+          "type": "boolean",
+          "example": true
+        },
+        "imagem_url": {
+          "type": "string",
+          "example": "https://exemplo.com/rosa.jpg"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "Descrição aqui..."
+        },
+        "criado_em": {
+          "type": "string",
+          "example": "2025-01-01T12:00:00Z"
+        },
+        "atualizado_em": {
+          "type": "string",
+          "example": "2025-01-02T13:00:00Z"
+        }
+      },
+      "required": [
+        "id",
+        "nome_comum",
+        "nome_cientifico",
+        "familia",
+        "origem",
+        "tipo",
+        "ambiente",
+        "rega",
+        "toxico",
+        "imagem_url",
+        "descricao",
+        "criado_em",
+        "atualizado_em"
+      ]
+    },
+    "ParasiteData": {
+      "type": "object",
+      "properties": {
+        "nome_comum": {
+          "type": "string",
+          "example": "Pulgão"
+        },
+        "nome_cientifico": {
+          "type": "string",
+          "example": "Aphidoidea"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "Inseto"
+        },
+        "plantas_afetadas": {
+          "type": "array",
+          "example": [
+            "Rosa",
+            "Hibisco"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "sintomas": {
+          "type": "string",
+          "example": "Folhas enroladas"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "Sabão inseticida"
+        },
+        "imagem_url": {
+          "type": "string",
+          "example": "https://exemplo.com/pulgao.jpg"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "Um inseto sugador de seiva."
+        }
+      },
+      "required": [
+        "nome_comum",
+        "nome_cientifico",
+        "tipo",
+        "plantas_afetadas",
+        "sintomas",
+        "tratamento",
+        "imagem_url",
+        "descricao"
+      ]
+    },
+    "ParasiteDataResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "nome_comum": {
+          "type": "string",
+          "example": "Pulgão"
+        },
+        "nome_cientifico": {
+          "type": "string",
+          "example": "Aphidoidea"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "Inseto"
+        },
+        "plantas_afetadas": {
+          "type": "array",
+          "example": [
+            "Rosa"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "sintomas": {
+          "type": "string",
+          "example": "Folhas enroladas"
+        },
+        "tratamento": {
+          "type": "string",
+          "example": "Sabão inseticida"
+        },
+        "imagem_url": {
+          "type": "string",
+          "example": "https://exemplo.com/pulgao.jpg"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "Descrição..."
+        },
+        "criado_em": {
+          "type": "string",
+          "example": "2025-01-01T12:00:00Z"
+        },
+        "atualizado_em": {
+          "type": "string",
+          "example": "2025-01-02T13:00:00Z"
+        }
+      },
+      "required": [
+        "id",
+        "nome_comum",
+        "nome_cientifico",
+        "tipo",
+        "plantas_afetadas",
+        "sintomas",
+        "tratamento",
+        "imagem_url",
+        "descricao",
+        "criado_em",
+        "atualizado_em"
+      ]
+    },
+    "UserData": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Lucas"
+        },
+        "email": {
+          "type": "string",
+          "example": "lucas@email.com"
+        },
+        "senha": {
+          "type": "string",
+          "example": "123456"
+        },
+        "data_criacao": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "nivel_acesso": {
+          "type": "string",
+          "example": "admin"
+        }
+      },
+      "required": [
+        "nome",
+        "email",
+        "senha",
+        "data_criacao",
+        "nivel_acesso"
+      ]
+    },
+    "UserDataResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "nome": {
+          "type": "string",
+          "example": "Lucas"
+        },
+        "email": {
+          "type": "string",
+          "example": "lucas@email.com"
+        },
+        "senha": {
+          "type": "string",
+          "example": "$2b$10$l4c6xsbXpNtOtOUC/nsCYuU7HA/1hY5CS/Z08GiPWfXTBPrHTnrGW"
+        },
+        "data_criacao": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "nivel_acesso": {
+          "type": "string",
+          "example": "admin"
+        }
+      },
+      "required": [
+        "id",
+        "nome",
+        "email",
+        "senha",
+        "data_criacao",
+        "nivel_acesso"
+      ]
+    }
+  }
+}
